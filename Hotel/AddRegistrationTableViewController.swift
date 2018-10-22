@@ -10,10 +10,12 @@ import UIKit
 
 class AddRegistrationTableViewController: UITableViewController {
     
+    // Первая секция.
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    // Вторая секция.
     @IBOutlet weak var arrivalDate: UILabel!
     @IBOutlet weak var arrivalDatePicker: UIDatePicker!
     @IBOutlet weak var departureDate: UILabel!
@@ -32,6 +34,7 @@ class AddRegistrationTableViewController: UITableViewController {
         }
     }
     
+    // Третья секция.
     @IBOutlet weak var adultsCount: UILabel!
     @IBOutlet weak var adultsStepper: UIStepper!
     @IBOutlet weak var childrenCount: UILabel!
@@ -42,9 +45,11 @@ class AddRegistrationTableViewController: UITableViewController {
     var senderValueAdults = 0
     var senderValueChildren = 0
     
+    // Четвертая секция.
     @IBOutlet weak var wifiSwitch: UISwitch!
     var wifi: Bool = false
     
+    // Пятая секция.
     @IBOutlet weak var roomTypeLabel: UILabel!
     var roomType: RoomType?
     
@@ -84,6 +89,15 @@ class AddRegistrationTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        guard segue.identifier == "doneUnwind" else { return }
+        
+        guard let sourceViewController = segue.source as? DetailTableViewController else { return }
+        roomType = sourceViewController.roomTypeToFirstVC
+        
+        roomTypeLabel.text = roomType?.name
+    }
+    
     @IBAction func saveBarButtonTapped(_ sender: UIBarButtonItem) {
         guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let email = emailTextField.text else {
             return
@@ -99,15 +113,6 @@ class AddRegistrationTableViewController: UITableViewController {
         }
         
         print(firstName, lastName, email, arrivalDatePicker.date, departureDatePicker.date, adultsCountInt, childrenCountInt, wifi, selectedRoomType)
-    }
-    
-    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
-        guard segue.identifier == "doneUnwind" else { return }
-        
-        guard let sourceViewController = segue.source as? DetailTableViewController else { return }
-        roomType = sourceViewController.roomTypeToFirstVC
-        
-        roomTypeLabel.text = roomType?.name
     }
     
     override func viewDidLoad() {

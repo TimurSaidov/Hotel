@@ -74,6 +74,7 @@ class DetailTableViewController: UITableViewController, UIPickerViewDataSource, 
                 isRoomTypePickerShown = false
             } else {
                 isRoomTypePickerShown = true
+                pickerUpdate()
             }
         default:
             isRoomTypePickerShown = false
@@ -98,6 +99,10 @@ class DetailTableViewController: UITableViewController, UIPickerViewDataSource, 
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerUpdate()
+    }
+    
+    func pickerUpdate() {
         let selectedRow = roomTypePicker.selectedRow(inComponent: 0)
         let selectedRoomType = roomType[selectedRow]
         roomTypeToFirstVC = selectedRoomType
