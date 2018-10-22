@@ -89,7 +89,16 @@ class AddRegistrationTableViewController: UITableViewController {
             return
         }
         
-        print(firstName, lastName, email, arrivalDatePicker.date, departureDatePicker.date, adultsCountInt, childrenCountInt, wifi)
+        guard let selectedRoomType = roomType else {
+            let ac = UIAlertController(title: "Choise room type please", message: "You should choise any room type to make registration", preferredStyle: UIAlertController.Style.alert)
+            let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            ac.addAction(ok)
+            self.present(ac, animated: true, completion: nil)
+            
+            return
+        }
+        
+        print(firstName, lastName, email, arrivalDatePicker.date, departureDatePicker.date, adultsCountInt, childrenCountInt, wifi, selectedRoomType)
     }
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
