@@ -45,6 +45,9 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet weak var wifiSwitch: UISwitch!
     var wifi: Bool = false
     
+    @IBOutlet weak var roomTypeLabel: UILabel!
+    var roomType: RoomType?
+    
     @IBAction func updateDate(_ sender: UIDatePicker) {
         updateDate()
     }
@@ -81,12 +84,21 @@ class AddRegistrationTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func doneBarButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func saveBarButtonTapped(_ sender: UIBarButtonItem) {
         guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let email = emailTextField.text else {
             return
         }
         
         print(firstName, lastName, email, arrivalDatePicker.date, departureDatePicker.date, adultsCountInt, childrenCountInt, wifi)
+    }
+    
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        guard segue.identifier == "doneUnwind" else { return }
+        
+        guard let sourceViewController = segue.source as? DetailTableViewController else { return }
+        roomType = sourceViewController.roomTypeToFirstVC
+        
+        roomTypeLabel.text = roomType?.name
     }
     
     override func viewDidLoad() {
@@ -125,6 +137,7 @@ class AddRegistrationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        tableView.beginUpdates()
         switch (indexPath.section, indexPath.row) {
         case (arrivalDatePickerCellIndexPath.section, arrivalDatePickerCellIndexPath.row - 1):
             if isArrivalDatePickerShown {
@@ -148,9 +161,7 @@ class AddRegistrationTableViewController: UITableViewController {
             isArrivalDatePickerShown = false
             isDepartureDatePickerShown = false
         }
-        
-        tableView.beginUpdates() // tableView.reloadData() не имеет смысла, т.к. нет источника данных.
-        tableView.endUpdates()
+        tableView.endUpdates() // вместо этого блока beginUpdates()-endUpdates() можно tableView.reloadData(), но не имеет смысла, т.к. нет источника данных. Также reloadData() можно использовать, если не нужна анимация.
     }
     
     func updateDate() {
@@ -163,4 +174,18 @@ class AddRegistrationTableViewController: UITableViewController {
         departureDate.text = dateFormatter.string(from: departureDatePicker.date)
     }
 
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" {
+            if let roomTypeChoosen = roomType {
+                guard let navigationController = segue.destination as? UINavigationController else { return }
+                guard let detailTableViewController = navigationController.viewControllers.first as? DetailTableViewController else { return }
+                detailTableViewController.roomTypeToFirstVC = roomTypeChoosen
+            } else {
+                return
+            }
+        }
+    }
+    
 }

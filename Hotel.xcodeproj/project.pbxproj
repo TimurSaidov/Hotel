@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		395B1069217DE9D800C9B6A7 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B1068217DE9D800C9B6A7 /* DetailTableViewController.swift */; };
 		39A65705217C8D29006CC44F /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A65704217C8D29006CC44F /* Registration.swift */; };
 		39A65708217CA06A006CC44F /* AddRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A65707217CA06A006CC44F /* AddRegistrationTableViewController.swift */; };
 		39CEE948217BC5C8007B101B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CEE947217BC5C8007B101B /* AppDelegate.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		395B1068217DE9D800C9B6A7 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		39A65704217C8D29006CC44F /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		39A65707217CA06A006CC44F /* AddRegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		39CEE944217BC5C8007B101B /* Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,7 @@
 			children = (
 				39CEE947217BC5C8007B101B /* AppDelegate.swift */,
 				39A65707217CA06A006CC44F /* AddRegistrationTableViewController.swift */,
+				395B1068217DE9D800C9B6A7 /* DetailTableViewController.swift */,
 				39A65706217C9345006CC44F /* Model */,
 				39CEE94B217BC5C8007B101B /* Main.storyboard */,
 				39CEE94E217BC5CA007B101B /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				395B1069217DE9D800C9B6A7 /* DetailTableViewController.swift in Sources */,
 				39A65708217CA06A006CC44F /* AddRegistrationTableViewController.swift in Sources */,
 				39A65705217C8D29006CC44F /* Registration.swift in Sources */,
 				39CEE948217BC5C8007B101B /* AppDelegate.swift in Sources */,
