@@ -13,7 +13,8 @@ class DetailTableViewController: UITableViewController, UIPickerViewDataSource, 
     @IBOutlet weak var roomTypePicker: UIPickerView!
     @IBOutlet weak var roomTypeLabel: UILabel!
     @IBOutlet weak var roomPriceLabel: UILabel!
-
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     var roomType: [RoomType] = [
         RoomType(id: 0, name: "Single", shortName: "SNGL", price: 100),
         RoomType(id: 1, name: "Double", shortName: "DBL", price: 200),
@@ -27,7 +28,7 @@ class DetailTableViewController: UITableViewController, UIPickerViewDataSource, 
     ]
     
     var isRoomTypePickerShown: Bool = false
-    var roomTypeToFirstVC: RoomType?
+    var selectedRoomType: RoomType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +36,16 @@ class DetailTableViewController: UITableViewController, UIPickerViewDataSource, 
         roomTypePicker.dataSource = self
         roomTypePicker.delegate = self
         
-        guard let roomType = roomTypeToFirstVC else { return }
+        guard let roomType = selectedRoomType else {
+            updateDoneButtonState()
+            
+            return
+        }
         print(roomType)
         roomTypeLabel.text = roomType.name
         roomPriceLabel.text = "$\(roomType.price) / 1 day"
+        
+        updateDoneButtonState()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,10 +101,21 @@ class DetailTableViewController: UITableViewController, UIPickerViewDataSource, 
     
     func pickerUpdate() {
         let selectedRow = roomTypePicker.selectedRow(inComponent: 0)
-        let selectedRoomType = roomType[selectedRow]
-        roomTypeToFirstVC = selectedRoomType
+        let selectedRoomTypeFromPicker = roomType[selectedRow]
         
-        roomTypeLabel.text = selectedRoomType.name
-        roomPriceLabel.text = "$\(selectedRoomType.price) / 1 day"
+        selectedRoomType = selectedRoomTypeFromPicker
+        
+        roomTypeLabel.text = selectedRoomTypeFromPicker.name
+        roomPriceLabel.text = "$\(selectedRoomTypeFromPicker.price) / 1 day"
+        
+        updateDoneButtonState()
+    }
+    
+    func updateDoneButtonState() {
+        if roomTypeLabel.text == "Type" {
+            doneButton.isEnabled = false
+        } else {
+            doneButton.isEnabled = true
+        }
     }
 }

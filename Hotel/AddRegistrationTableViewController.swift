@@ -94,9 +94,9 @@ class AddRegistrationTableViewController: UITableViewController {
         
         guard let sourceViewController = segue.source as? DetailTableViewController else { return }
         
-        guard let selectedRoomType = sourceViewController.roomTypeToFirstVC  else { return }
+//        guard let selectedRoomType = sourceViewController.roomTypeToFirstVC  else { return }
         
-        roomType = selectedRoomType
+        roomType = sourceViewController.selectedRoomType
         roomTypeLabel.text = roomType?.name
     }
     
@@ -208,10 +208,10 @@ class AddRegistrationTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue" {
-            if let roomTypeChoosen = roomType {
+            if let selectedRoomType = roomType {
                 guard let navigationController = segue.destination as? UINavigationController else { return }
                 guard let detailTableViewController = navigationController.viewControllers.first as? DetailTableViewController else { return }
-                detailTableViewController.roomTypeToFirstVC = roomTypeChoosen
+                detailTableViewController.selectedRoomType = selectedRoomType
             } else {
                 return
             }

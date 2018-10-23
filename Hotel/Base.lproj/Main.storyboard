@@ -483,6 +483,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="EZV-Ml-61f" id="rmg-Ac-vIu"/>
                         <outlet property="roomPriceLabel" destination="ik8-7B-YbE" id="dnQ-OW-nRn"/>
                         <outlet property="roomTypeLabel" destination="ziw-bQ-IQ1" id="lqA-OI-8mo"/>
                         <outlet property="roomTypePicker" destination="ldg-fQ-J0X" id="aY8-bE-DGD"/>
