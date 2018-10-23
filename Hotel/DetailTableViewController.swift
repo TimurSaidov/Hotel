@@ -14,6 +14,10 @@ class DetailTableViewController: UITableViewController, UIPickerViewDataSource, 
     @IBOutlet weak var roomTypeLabel: UILabel!
     @IBOutlet weak var roomPriceLabel: UILabel!
     
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        
+    }
+    
     var roomType: [RoomType] = [
         RoomType(id: 0, name: "Single", shortName: "SNGL", price: 100),
         RoomType(id: 1, name: "Double", shortName: "DBL", price: 200),
@@ -28,17 +32,6 @@ class DetailTableViewController: UITableViewController, UIPickerViewDataSource, 
     
     var isRoomTypePickerShown: Bool = false
     var roomTypeToFirstVC: RoomType?
-    
-    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        guard let _ = roomTypeToFirstVC else {
-            let ac = UIAlertController(title: "Choise room type please", message: "You should choise any room type to make registration", preferredStyle: UIAlertController.Style.alert)
-            let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            ac.addAction(ok)
-            self.present(ac, animated: true, completion: nil)
-            
-            return
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +67,7 @@ class DetailTableViewController: UITableViewController, UIPickerViewDataSource, 
                 isRoomTypePickerShown = false
             } else {
                 isRoomTypePickerShown = true
+                // Нажимая на ячейку Type-Price (0-ая ячейка 0-ой секции), эти label'ы заменяются первым элементом roomTypePicker, а именно RoomType(id: 0, name: "Single", shortName: "SNGL", price: 100). 
                 pickerUpdate()
             }
         default:

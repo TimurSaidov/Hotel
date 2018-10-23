@@ -354,7 +354,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ID6-hg-lYG">
-                                                    <rect key="frame" x="222" y="11" width="56" height="20.5"/>
+                                                    <rect key="frame" x="230" y="11" width="56" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -473,13 +473,13 @@
                     <navigationItem key="navigationItem" title="Room Type" id="Hih-bP-NU6">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Zpv-PB-8Wn">
                             <connections>
-                                <segue destination="t3M-fl-c21" kind="unwind" unwindAction="unwindSegueWithSegue:" id="WDf-UH-SGD"/>
+                                <segue destination="t3M-fl-c21" kind="unwind" unwindAction="unwindSegueWithSegue:" id="NdW-yo-01P"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="EZV-Ml-61f">
                             <connections>
-                                <action selector="doneButtonPressed:" destination="zAo-0s-Nxb" id="TSN-cl-Z96"/>
-                                <segue destination="t3M-fl-c21" kind="unwind" identifier="doneUnwind" unwindAction="unwindSegueWithSegue:" id="xb5-7r-EAm"/>
+                                <action selector="doneButtonPressed:" destination="zAo-0s-Nxb" id="mG2-wk-Kyc"/>
+                                <segue destination="t3M-fl-c21" kind="unwind" identifier="doneUnwind" unwindAction="unwindSegueWithSegue:" id="zxK-bT-4Nb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -93,8 +93,10 @@ class AddRegistrationTableViewController: UITableViewController {
         guard segue.identifier == "doneUnwind" else { return }
         
         guard let sourceViewController = segue.source as? DetailTableViewController else { return }
-        roomType = sourceViewController.roomTypeToFirstVC
         
+        guard let selectedRoomType = sourceViewController.roomTypeToFirstVC  else { return }
+        
+        roomType = selectedRoomType
         roomTypeLabel.text = roomType?.name
     }
     
