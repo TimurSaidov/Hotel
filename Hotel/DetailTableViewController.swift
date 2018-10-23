@@ -13,11 +13,7 @@ class DetailTableViewController: UITableViewController, UIPickerViewDataSource, 
     @IBOutlet weak var roomTypePicker: UIPickerView!
     @IBOutlet weak var roomTypeLabel: UILabel!
     @IBOutlet weak var roomPriceLabel: UILabel!
-    
-    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        
-    }
-    
+
     var roomType: [RoomType] = [
         RoomType(id: 0, name: "Single", shortName: "SNGL", price: 100),
         RoomType(id: 1, name: "Double", shortName: "DBL", price: 200),

@@ -478,7 +478,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="EZV-Ml-61f">
                             <connections>
-                                <action selector="doneButtonPressed:" destination="zAo-0s-Nxb" id="mG2-wk-Kyc"/>
                                 <segue destination="t3M-fl-c21" kind="unwind" identifier="doneUnwind" unwindAction="unwindSegueWithSegue:" id="zxK-bT-4Nb"/>
                             </connections>
                         </barButtonItem>
