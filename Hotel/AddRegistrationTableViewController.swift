@@ -101,7 +101,21 @@ class AddRegistrationTableViewController: UITableViewController {
     }
     
     @IBAction func saveBarButtonTapped(_ sender: UIBarButtonItem) {
-        guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let email = emailTextField.text else {
+        guard firstNameTextField.text != "" && lastNameTextField.text != "" && emailTextField.text != "" else {
+            let ac = UIAlertController(title: "Enter all text fields please", message: "You should enter your name, surname and email adress", preferredStyle: UIAlertController.Style.alert)
+            let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            ac.addAction(ok)
+            self.present(ac, animated: true, completion: nil)
+            
+            return
+        }
+        
+        guard adultsCountInt != 0 else {
+            let ac = UIAlertController(title: "Select the number of adults and children", message: "The number of adults and children should not be equal 0", preferredStyle: UIAlertController.Style.alert)
+            let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            ac.addAction(ok)
+            self.present(ac, animated: true, completion: nil)
+            
             return
         }
         
@@ -114,7 +128,7 @@ class AddRegistrationTableViewController: UITableViewController {
             return
         }
         
-        print(firstName, lastName, email, arrivalDatePicker.date, departureDatePicker.date, adultsCountInt, childrenCountInt, wifi, selectedRoomType)
+        print(firstNameTextField.text!, lastNameTextField.text!, emailTextField.text!, arrivalDatePicker.date, departureDatePicker.date, adultsCountInt, childrenCountInt, wifi, selectedRoomType)
     }
     
     override func viewDidLoad() {
