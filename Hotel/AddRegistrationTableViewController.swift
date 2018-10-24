@@ -143,6 +143,7 @@ class AddRegistrationTableViewController: UITableViewController {
         childrenCount.text = String(childrenCountInt)
     }
     
+    
     // Метод, вызывающийся при отображении ячеек. То есть когда приходит запрос на высоту ячейки indexPath.row  в секции indexPath.section.
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
@@ -192,6 +193,8 @@ class AddRegistrationTableViewController: UITableViewController {
             isDepartureDatePickerShown = false
         }
         tableView.endUpdates() // вместо этого блока beginUpdates()-endUpdates() можно tableView.reloadData(), но не имеет смысла, т.к. нет источника данных. Также reloadData() можно использовать, если не нужна анимация.
+        
+        tableView.endEditing(true)
     }
     
     func updateDate() {
